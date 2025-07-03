@@ -51,7 +51,7 @@ private macro test(name, **kwargs, &block)
 end
 
 describe Redis::Graph do
-  redis = Redis::Client.new(URI.parse("redis://localhost:6380"))
+  redis = Redis::Client.new(URI.parse("#{ENV["REDIS_URL"]}"))
 
   test "creates and retrieves nodes" do
     2.times do
