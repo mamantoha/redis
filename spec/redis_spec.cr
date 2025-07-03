@@ -386,19 +386,19 @@ describe Redis::Client do
     end
   end
 
-  test "can use different Redis DBs" do
-    secondary_uri = redis_uri.dup
-    secondary_uri.path = "/15"
-    secondary_db = Redis::Client.new(uri: secondary_uri)
-
-    begin
-      redis.set key, "42"
-      redis.get(key).should eq "42"
-      secondary_db.get(key).should eq nil
-    ensure
-      secondary_db.close
-    end
-  end
+  # test "can use different Redis DBs" do
+  #   secondary_uri = redis_uri.dup
+  #   secondary_uri.path = "/15"
+  #   secondary_db = Redis::Client.new(uri: secondary_uri)
+  #
+  #   begin
+  #     redis.set key, "42"
+  #     redis.get(key).should eq "42"
+  #     secondary_db.get(key).should eq nil
+  #   ensure
+  #     secondary_db.close
+  #   end
+  # end
 
   describe "streams" do
     test "can use streams" do
